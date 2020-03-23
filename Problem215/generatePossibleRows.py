@@ -8,29 +8,22 @@ import sys
 
 def generatePossibleRows(row, width): #generates all possible rows using bricks of length 2 and 3 given initial row (for recursion) and width of row
     rows = open(os.path.join(sys.path[0], "%srows.txt" %width), "a")
-    length = 0
+    length = 0 #determine length of initial row
     for i in row:
         length += i
-    if length == width - 4:
-        row.append(2)
-        row.append(2)
+    if not length < width - 4: #edge cases
+        if length == width - 4:
+            row.append(2)
+            row.append(2)
+        elif length == width - 3:
+            row.append(3)
+        elif length == width - 2:
+            row.append(2)
         strRow = ''
         for brick in row:
             strRow += str(brick)
         rows.write(strRow + '\n')
-    elif length == width - 3:
-        row.append(3)
-        strRow = ''
-        for brick in row:
-            strRow += str(brick)
-        rows.write(strRow + '\n')
-    elif length == width - 2:
-        row.append(2)
-        strRow = ''
-        for brick in row:
-            strRow += str(brick)
-        rows.write(strRow + '\n')
-    elif length < width - 4:
+    else: #if not an edge case, recursively generate row
         row1 = row.copy()
         row2 = row.copy()
         row1.append(2)
@@ -39,4 +32,4 @@ def generatePossibleRows(row, width): #generates all possible rows using bricks 
         generatePossibleRows(row2, width)
     rows.close()
 
-generatePossibleRows([], 16)
+generatePossibleRows([], 32)
