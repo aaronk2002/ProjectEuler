@@ -3,8 +3,11 @@
 # There are eight ways of forming a crack-free 9×3 wall, written W(9,3) = 8.
 # Calculate W(32,10).
 
+import os
+import sys
+
 def generatePossibleRows(row, width): #generates all possible rows using bricks of length 2 and 3 given initial row (for recursion) and width of row
-    rows = open("%srows.txt" %width, "a")
+    rows = open(os.path.join(sys.path[0], "%srows.txt" %width), "a")
     length = 0
     for i in row:
         length += i
@@ -36,4 +39,4 @@ def generatePossibleRows(row, width): #generates all possible rows using bricks 
         generatePossibleRows(row2, width)
     rows.close()
 
-generatePossibleRows([], 32)
+generatePossibleRows([], 16)
