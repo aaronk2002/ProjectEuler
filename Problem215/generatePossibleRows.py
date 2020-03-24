@@ -32,4 +32,4 @@ def generatePossibleRows(row, width): #generates all possible rows using bricks 
         generatePossibleRows(row2, width)
     rows.close()
 
-generatePossibleRows([], 32)
+generatePossibleRows([], 12)

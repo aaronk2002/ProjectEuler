@@ -7,12 +7,12 @@ import os
 import sys
 import itertools
 
-lengthOfRows = 16 #length of rows to be used in creating wall - rows file MUST be generated beforehand using generatePossibleRows.py
+lengthOfRows = 12 #length of rows to be used in creating wall - rows file MUST be generated beforehand using generatePossibleRows.py
 
 with open('Problem215/' + str(lengthOfRows) + 'rows.txt') as file: #import rows from file as array
     rows = file.readlines()
-rows = [i.strip() for i in rows]
 file.close()
+rows = [i.strip() for i in rows] #rows is list of rows
 
 def generatePossibleWalls(rows, height):
     walls = open(os.path.join(sys.path[0], "%dx%dwall.txt" %(lengthOfRows, height)), "a") #create file containing all possible rows given list of rows and height of wall
