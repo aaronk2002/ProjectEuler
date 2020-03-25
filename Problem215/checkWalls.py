@@ -38,16 +38,18 @@ def checkWalls(wallsFile):
         crackSet = []
         for row in wall:
             crackSet.append(getCracks(row))
-        for cracks1 in crackSet:
-            for cracks2 in crackSet:
-                print(cracks1)
-                print(cracks2)
-                if (cracks1 == cracks2):
-                    print('Skipped')
-                    break
-                if(not commonMember(cracks1, cracks2)):
-                    print("Set with no matches found")
-                    goodWalls += 1
+        print(crackSet)
+        for i in range(len(crackSet) - 1):
+            print(crackSet[i])
+            print(crackSet[i+1])
+            if(commonMember(crackSet[i], crackSet[i+1])):
+                print('Continuing')
+                break
+            if(i+1 == len(crackSet) - 1):
+                print('Adding wall')
+                goodWalls += 1
+        else:
+            continue
     print(goodWalls)
 
-checkWalls('12x2wall.txt')
+checkWalls('9x3wall.txt')
