@@ -1,3 +1,15 @@
+def getCracks(row):
+    rowList = [int(brick) for brick in row]
+    cracks = [] #list of all cracks in row
+    index = 1
+    while index < len(rowList):
+        sum = 0
+        for brick in range(index):
+            sum += rowList[index]
+        cracks.append(sum)
+        index += 1
+    return(cracks)
+
 def checkWalls(wallsFile):
     with open('Problem215/' + wallsFile) as file: #import rows from file as array
         unseparatedWalls = file.readlines()
@@ -14,5 +26,11 @@ def checkWalls(wallsFile):
             walls.append(wall)
             wall = []
         wallCount += 1
+    
+    goodWalls = 0
+    for wall in walls:
+        for row in wall:
+            print(getCracks(row))
+
 
 checkWalls('12x2wall.txt')
