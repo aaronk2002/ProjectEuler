@@ -5,10 +5,16 @@ def getCracks(row):
     while index < len(rowList):
         sum = 0
         for brick in range(index):
-            sum += rowList[index]
+            sum += rowList[brick]
         cracks.append(sum)
         index += 1
     return(cracks)
+
+def commonMember(a, b):
+    if(set(a) & set(b)):
+        return(True)
+    else:
+        return(False)
 
 def checkWalls(wallsFile):
     with open('Problem215/' + wallsFile) as file: #import rows from file as array
@@ -29,8 +35,19 @@ def checkWalls(wallsFile):
     
     goodWalls = 0
     for wall in walls:
+        crackSet = []
         for row in wall:
-            print(getCracks(row))
-
+            crackSet.append(getCracks(row))
+        for cracks1 in crackSet:
+            for cracks2 in crackSet:
+                print(cracks1)
+                print(cracks2)
+                if (cracks1 == cracks2):
+                    print('Skipped')
+                    break
+                if(not commonMember(cracks1, cracks2)):
+                    print("Set with no matches found")
+                    goodWalls += 1
+    print(goodWalls)
 
 checkWalls('12x2wall.txt')
