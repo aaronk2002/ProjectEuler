@@ -16,7 +16,7 @@ rows = [i.strip() for i in rows] #rows is list of rows
 
 def generatePossibleWalls(rows, height):
     walls = open(os.path.join(sys.path[0], "%dx%dwall.txt" %(lengthOfRows, height)), "a") #create file containing all possible rows given list of rows and height of wall
-    for r in itertools.permutations(rows, height):
+    for r in itertools.product(rows, repeat=height):
         for i in range(height):
             walls.write(r[i] + '\n')
         walls.write('\n')

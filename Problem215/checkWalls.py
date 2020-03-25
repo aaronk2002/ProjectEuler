@@ -38,15 +38,15 @@ def checkWalls(wallsFile):
         crackSet = []
         for row in wall:
             crackSet.append(getCracks(row))
-        print(crackSet)
+        #print(crackSet)
         for i in range(len(crackSet) - 1):
-            print(crackSet[i])
-            print(crackSet[i+1])
+            #print(crackSet[i])
+            #print(crackSet[i+1])
             if(commonMember(crackSet[i], crackSet[i+1])):
-                print('Continuing')
+                #print('Continuing')
                 break
             if(i+1 == len(crackSet) - 1):
-                print('Adding wall')
+                #print('Adding wall')
                 goodWalls += 1
         else:
             continue
