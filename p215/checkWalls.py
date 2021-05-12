@@ -17,7 +17,7 @@ def commonMember(a, b):
         return(False)
 
 def checkWalls(wallsFile):
-    with open('Problem215/' + wallsFile) as file: #import rows from file as array
+    with open('p215/' + wallsFile) as file: #import rows from file as array
         unseparatedWalls = file.readlines()
     file.close()
     unseparatedWalls = [i.strip() for i in unseparatedWalls]
